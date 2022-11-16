@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.API.Test.Unit"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.API.Test.Integration", "test\DisplayLogic.API.Test.Integration\DisplayLogic.API.Test.Integration.csproj", "{9FD067B8-6D32-486D-84BB-19C17D8A6D0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.Domain", "src\DisplayLogic.Domain\DisplayLogic.Domain.csproj", "{7860F692-F024-496B-B3F6-50475B62A3B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9FD067B8-6D32-486D-84BB-19C17D8A6D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FD067B8-6D32-486D-84BB-19C17D8A6D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FD067B8-6D32-486D-84BB-19C17D8A6D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7860F692-F024-496B-B3F6-50475B62A3B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7860F692-F024-496B-B3F6-50475B62A3B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7860F692-F024-496B-B3F6-50475B62A3B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7860F692-F024-496B-B3F6-50475B62A3B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
