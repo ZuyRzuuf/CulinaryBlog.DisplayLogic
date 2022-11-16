@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.Domain.Test.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.Infrastructure", "src\DisplayLogic.Infrastructure\DisplayLogic.Infrastructure.csproj", "{C1887F0C-E790-4856-9813-B05FAD3D9488}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.Infrastructure.Test.Unit", "test\DisplayLogic.Infrastructure.Test.Unit\DisplayLogic.Infrastructure.Test.Unit.csproj", "{FA1A5168-162E-49CD-8618-3D4677E1611F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{C1887F0C-E790-4856-9813-B05FAD3D9488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1887F0C-E790-4856-9813-B05FAD3D9488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1887F0C-E790-4856-9813-B05FAD3D9488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA1A5168-162E-49CD-8618-3D4677E1611F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA1A5168-162E-49CD-8618-3D4677E1611F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA1A5168-162E-49CD-8618-3D4677E1611F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA1A5168-162E-49CD-8618-3D4677E1611F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
