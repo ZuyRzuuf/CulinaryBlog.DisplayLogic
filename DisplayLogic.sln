@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.API", "src\DisplayLogic.API\DisplayLogic.API.csproj", "{23C256D6-F34D-4037-93C2-5F15ACA4FBE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayLogic.API.Test.Unit", "test\DisplayLogic.API.Test.Unit\DisplayLogic.API.Test.Unit.csproj", "{3FC066DC-6681-4A63-9ECE-0918F066E677}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{23C256D6-F34D-4037-93C2-5F15ACA4FBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23C256D6-F34D-4037-93C2-5F15ACA4FBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23C256D6-F34D-4037-93C2-5F15ACA4FBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC066DC-6681-4A63-9ECE-0918F066E677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC066DC-6681-4A63-9ECE-0918F066E677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC066DC-6681-4A63-9ECE-0918F066E677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC066DC-6681-4A63-9ECE-0918F066E677}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
