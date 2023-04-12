@@ -7,4 +7,5 @@ public class Comment
     public Author Author { get; set; }
     public DateTime CreatedAt { get; set; }
     public Guid ArticleId { get; set; }
+    public Guid RecipeId { get; set; }
 }

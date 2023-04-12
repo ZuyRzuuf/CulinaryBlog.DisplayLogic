@@ -1,4 +1,6 @@
 using DisplayLogic.Domain.Entities;
+using DisplayLogic.Domain.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace DisplayLogic.Domain.Types;
 
@@ -20,5 +22,24 @@ public class RecipeType : ObjectType<Recipe>
         descriptor.Field(f => f.Season).Type<NonNullType<SeasonType>>();
         descriptor.Field(f => f.Tags).Type<NonNullType<ListType<NonNullType<TagType>>>>();
         descriptor.Field(f => f.Comments).Type<NonNullType<ListType<NonNullType<CommentType>>>>();
+        
+        descriptor
+            .Field("comments")
+            .Type<NonNullType<ListType<NonNullType<CommentType>>>>()
+            .Resolver(async ctx =>
+            {
+                try
+                {
+                    var recipeResolver = ctx.Service<IRecipeResolver>();
+                    var comments = await recipeResolver.GetCommentsByRecipeUuidAsync(ctx.Parent<Recipe>().Uuid);
+                    return comments;
+                }
+                catch (Exception ex)
+                {
+                    var logger = ctx.Service<ILogger<RecipeType>>();
+                    logger.LogError(ex, "Error occurred while resolving comments for recipe.");
+                    throw;
+                }
+            });
     }
 }

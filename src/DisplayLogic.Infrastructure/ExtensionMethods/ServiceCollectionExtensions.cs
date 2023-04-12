@@ -10,9 +10,10 @@ public static class ServiceCollectionExtensions
     {
         services
             .AddScoped<IArticleService, ArticleService>()
+            .AddScoped<IRecipeService, RecipeService>()
+            .AddScoped<IRecipeResolver, RecipeResolver>()
             .AddScoped<ICommentService, CommentService>()
-            .AddScoped<ICommentResolver, CommentResolver>()
-            ;
+            .AddScoped<ICommentResolver, CommentResolver>();
 
         return services;
     }

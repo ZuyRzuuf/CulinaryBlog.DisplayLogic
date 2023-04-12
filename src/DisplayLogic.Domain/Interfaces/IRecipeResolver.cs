@@ -1,10 +1,9 @@
 using DisplayLogic.Domain.Entities;
+using HotChocolate.Resolvers;
 
 namespace DisplayLogic.Domain.Interfaces;
 
-public interface ICommentService
+public interface IRecipeResolver
 {
-    List<Comment> GetAllComments();
-    List<Comment> GetCommentsByArticleId(Guid articleUuid);
     Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid);
 }

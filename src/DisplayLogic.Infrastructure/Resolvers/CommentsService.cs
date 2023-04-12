@@ -25,7 +25,8 @@ public class CommentService : ICommentService
                     Content = "Second sample comment.",
                     Author = new Author { Id = 2, Username = "author2" },
                     CreatedAt = DateTime.Now.AddMinutes(-10),
-                    ArticleId = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285")
+                    // ArticleId = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285")
+                    RecipeId = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377")
                 },
                 new Comment
                 {
@@ -49,7 +50,8 @@ public class CommentService : ICommentService
                     Content = "Fifth sample comment.",
                     Author = new Author { Id = 5, Username = "author5" },
                     CreatedAt = DateTime.Now.AddMinutes(-25),
-                    ArticleId = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188")
+                    // ArticleId = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188")
+                    RecipeId = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377")
                 }
             };
         }
@@ -62,5 +64,10 @@ public class CommentService : ICommentService
         public List<Comment> GetCommentsByArticleId(Guid articleUuid)
         {
             return _comments.Where(c => c.ArticleId == articleUuid).ToList();
+        }
+        
+        public async Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid)
+        {
+            return _comments.FindAll(c => c.RecipeId == recipeUuid).ToList();
         }
     }
