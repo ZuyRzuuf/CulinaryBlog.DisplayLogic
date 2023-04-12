@@ -7,7 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+        <PackageReference Include="HotChocolate.AspNetCore" Version="12.15.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DisplayLogic.Domain\DisplayLogic.Domain.csproj" />
+      <ProjectReference Include="..\DisplayLogic.Infrastructure\DisplayLogic.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
