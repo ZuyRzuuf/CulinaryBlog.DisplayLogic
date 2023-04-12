@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="12.15.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DisplayLogic.Domain\DisplayLogic.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
