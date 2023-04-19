@@ -3,6 +3,7 @@ using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Infrastructure.Resolvers;
 
+/// <inheritdoc />
 public class RecipeResolver : IRecipeResolver
 {
     private readonly ICommentService _commentService;
@@ -12,6 +13,7 @@ public class RecipeResolver : IRecipeResolver
         _commentService = commentService;
     }
 
+    /// <inheritdoc />
     public async Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid)
     {
         return await _commentService.GetCommentsByRecipeUuidAsync(recipeUuid);

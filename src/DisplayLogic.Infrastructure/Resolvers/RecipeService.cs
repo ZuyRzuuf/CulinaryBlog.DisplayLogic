@@ -3,6 +3,7 @@ using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Infrastructure.Resolvers;
 
+/// <inheritdoc />
 public class RecipeService : IRecipeService
 {
     private readonly List<Recipe> _recipes;
@@ -113,11 +114,13 @@ public class RecipeService : IRecipeService
         };
     }
 
+    /// <inheritdoc />
     public List<Recipe> GetAllRecipes()
     {
         return _recipes;
     }
 
+    /// <inheritdoc />
     public Recipe GetRecipeById(Guid uuid)
     {
         return _recipes.FirstOrDefault(recipe => recipe.Uuid == uuid);

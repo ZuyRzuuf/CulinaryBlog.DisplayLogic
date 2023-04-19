@@ -3,6 +3,7 @@ using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Infrastructure.Resolvers;
 
+/// <inheritdoc />
 public class CommentService : ICommentService
     {
         private readonly List<Comment> _comments;
@@ -56,16 +57,19 @@ public class CommentService : ICommentService
             };
         }
 
+        /// <inheritdoc />
         public List<Comment> GetAllComments()
         {
             return _comments;
         }
 
+        /// <inheritdoc />
         public List<Comment> GetCommentsByArticleId(Guid articleUuid)
         {
             return _comments.Where(c => c.ArticleId == articleUuid).ToList();
         }
         
+        /// <inheritdoc />
         public async Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid)
         {
             return _comments.FindAll(c => c.RecipeId == recipeUuid).ToList();
