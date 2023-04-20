@@ -121,7 +121,7 @@ public class RecipeService : IRecipeService
     }
 
     /// <inheritdoc />
-    public Recipe GetRecipeById(Guid uuid)
+    public Recipe? GetRecipeById(Guid uuid)
     {
         return _recipes.FirstOrDefault(recipe => recipe.Uuid == uuid);
     }

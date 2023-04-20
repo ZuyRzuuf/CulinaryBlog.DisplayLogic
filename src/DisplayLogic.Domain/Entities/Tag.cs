@@ -13,5 +13,5 @@ public class Tag
     /// Gets or sets the name of the tag.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

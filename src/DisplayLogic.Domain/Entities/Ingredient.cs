@@ -13,5 +13,5 @@ public class Ingredient
     /// The name of the ingredient.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

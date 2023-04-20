@@ -13,5 +13,5 @@ public class Category
     /// The name of the category.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

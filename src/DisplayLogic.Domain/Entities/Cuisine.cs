@@ -13,5 +13,5 @@ public class Cuisine
     /// The name of the cuisine.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

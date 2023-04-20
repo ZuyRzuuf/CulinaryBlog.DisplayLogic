@@ -14,12 +14,13 @@ public class Comment
     /// <summary>
     /// The content of the comment.
     /// </summary>
-    public string Content { get; set; }
+    [Required]
+    public string Content { get; set; } = string.Empty;
     /// <summary>
     /// The author of the comment.
     /// </summary>
     [Required]
-    public Author Author { get; set; }
+    public Author Author { get; set; } = new Author();
     /// <summary>
     /// The date and time the comment was created.
     /// </summary>

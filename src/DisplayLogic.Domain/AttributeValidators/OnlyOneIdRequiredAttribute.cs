@@ -35,6 +35,6 @@ public class ExactlyOneAttribute : ValidationAttribute
             return new ValidationResult("Exactly one of the properties must be set.");
         }
 
-        return ValidationResult.Success;
+        return ValidationResult.Success!;
     }
 }

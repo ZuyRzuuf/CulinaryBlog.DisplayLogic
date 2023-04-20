@@ -21,5 +21,5 @@ public interface IArticleService
     /// <returns>
     /// The article with the specified unique identifier.
     /// </returns>
-    Article GetArticleById(Guid id);
+    Article? GetArticleById(Guid id);
 }

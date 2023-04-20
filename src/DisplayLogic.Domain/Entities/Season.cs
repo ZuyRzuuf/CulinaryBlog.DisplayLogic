@@ -13,5 +13,5 @@ public class Season
     /// Gets or sets the name of the season.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

@@ -13,5 +13,5 @@ public class Diet
     /// The name of the diet.
     /// </summary>
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

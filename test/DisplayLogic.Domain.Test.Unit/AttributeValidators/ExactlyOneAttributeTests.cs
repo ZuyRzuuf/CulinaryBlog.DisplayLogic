@@ -27,7 +27,7 @@ namespace DisplayLogic.Domain.Test.Unit.AttributeValidators
             var result = attribute.GetValidationResult(model.Property1, context);
 
             Assert.NotNull(result);
-            Assert.Equal("Exactly one of the properties must be set.", result.ErrorMessage);
+            Assert.Equal("Exactly one of the properties must be set.", result?.ErrorMessage);
         }
 
         [Fact]
@@ -43,17 +43,22 @@ namespace DisplayLogic.Domain.Test.Unit.AttributeValidators
             var validationResults = new List<ValidationResult>();
     
             // Get validation attributes for Property1 and Property2
-            var property1Attributes = context.ObjectType.GetProperty(nameof(TestModel.Property1)).GetCustomAttributes(true).OfType<ValidationAttribute>();
-            var property2Attributes = context.ObjectType.GetProperty(nameof(TestModel.Property2)).GetCustomAttributes(true).OfType<ValidationAttribute>();
+            var property1Attributes = context.ObjectType.GetProperty(nameof(TestModel.Property1))?.GetCustomAttributes(true).OfType<ValidationAttribute>();
+            var property2Attributes = context.ObjectType.GetProperty(nameof(TestModel.Property2))?.GetCustomAttributes(true).OfType<ValidationAttribute>();
     
             // Validate Property1 and Property2 individually
-            var property1ValidationResults = property1Attributes.Select(attribute => attribute.GetValidationResult(model.Property1, context)).ToList();
-            var property2ValidationResults = property2Attributes.Select(attribute => attribute.GetValidationResult(model.Property2, context)).ToList();
+            var property1ValidationResults = property1Attributes?.Select(attribute => attribute.GetValidationResult(model.Property1, context)!).ToList();
+            var property2ValidationResults = property2Attributes?.Select(attribute => attribute.GetValidationResult(model.Property2, context)!).ToList();
 
             // Combine the validation results
-            validationResults.AddRange(property1ValidationResults);
-            validationResults.AddRange(property2ValidationResults);
-
+            if (property1ValidationResults != null)
+            {
+                validationResults.AddRange(property1ValidationResults);
+            }
+            if (property2ValidationResults != null)
+            {
+                validationResults.AddRange(property2ValidationResults);
+            }
             // Check if there's at least one error
             Assert.NotEmpty(validationResults);
         }
@@ -74,7 +79,7 @@ namespace DisplayLogic.Domain.Test.Unit.AttributeValidators
             Validator.TryValidateObject(model, context, validationResults, true);
 
             // Count the validation results related to the ExactlyOneAttribute
-            int exactlyOneValidationResultsCount = validationResults.Count(r => r.ErrorMessage.Contains("Exactly one of the properties must be set."));
+            var exactlyOneValidationResultsCount = validationResults.Count(r => r.ErrorMessage?.Contains("Exactly one of the properties must be set.") == true);
 
             // Assert that there is only one successful validation result
             Assert.Equal(1, exactlyOneValidationResultsCount);

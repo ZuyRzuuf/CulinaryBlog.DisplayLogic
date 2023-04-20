@@ -18,5 +18,5 @@ public interface IRecipeService
     /// <returns>
     /// Recipe
     /// </returns>
-    Recipe GetRecipeById(Guid id);
+    Recipe? GetRecipeById(Guid id);
 }

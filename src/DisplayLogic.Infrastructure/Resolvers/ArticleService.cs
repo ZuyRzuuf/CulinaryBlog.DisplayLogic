@@ -76,7 +76,7 @@ public class ArticleService : IArticleService
     public List<Article> GetAllArticles() => _articles;
 
     /// <inheritdoc />
-    public Article GetArticleById(Guid uuid)
+    public Article? GetArticleById(Guid uuid)
     {
         return _articles.FirstOrDefault(article => article.Uuid == uuid);
     }
