@@ -4,6 +4,7 @@ using HotChocolate.Resolvers;
 
 namespace DisplayLogic.Infrastructure.Resolvers;
 
+/// <inheritdoc />
 public class CommentResolver : ICommentResolver
 {
     private readonly ICommentService _commentService;
@@ -13,9 +14,10 @@ public class CommentResolver : ICommentResolver
         _commentService = commentService;
     }
     
+    /// <inheritdoc />
     public List<Comment> GetCommentsByArticleId(IResolverContext context)
     {
-        Guid articleUuid = context.Parent<Article>().Uuid;
+        var articleUuid = context.Parent<Article>().Uuid;
         return _commentService.GetCommentsByArticleId(articleUuid);
     }
 }

@@ -26,7 +26,7 @@ public class RecipeType : ObjectType<Recipe>
         descriptor
             .Field("comments")
             .Type<NonNullType<ListType<NonNullType<CommentType>>>>()
-            .Resolver(async ctx =>
+            .Resolve(async ctx =>
             {
                 try
                 {
@@ -37,7 +37,7 @@ public class RecipeType : ObjectType<Recipe>
                 catch (Exception ex)
                 {
                     var logger = ctx.Service<ILogger<RecipeType>>();
-                    logger.LogError(ex, "Error occurred while resolving comments for recipe.");
+                    logger.LogError(ex, "Error occurred while resolving comments for recipe");
                     throw;
                 }
             });

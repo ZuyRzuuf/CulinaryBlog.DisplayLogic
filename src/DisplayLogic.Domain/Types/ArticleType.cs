@@ -18,6 +18,6 @@ public class ArticleType : ObjectType<Article>
         descriptor
             .Field("comments")
             .Type<NonNullType<ListType<NonNullType<CommentType>>>>()
-            .ResolveWith<ICommentResolver>(r => r.GetCommentsByArticleId(default));
+            .ResolveWith<ICommentResolver>(r => r.GetCommentsByArticleId(default!));
     }
 }

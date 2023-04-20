@@ -3,6 +3,7 @@ using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Infrastructure.Resolvers;
 
+/// <inheritdoc />
 public class ArticleService : IArticleService
 {
     private static readonly List<Article> _articles = new()
@@ -71,10 +72,11 @@ public class ArticleService : IArticleService
         }
     };
 
-    // public IReadOnlyList<Article> GetAllArticles() => _articles;
+    /// <inheritdoc />
     public List<Article> GetAllArticles() => _articles;
 
-    public Article GetArticleById(Guid uuid)
+    /// <inheritdoc />
+    public Article? GetArticleById(Guid uuid)
     {
         return _articles.FirstOrDefault(article => article.Uuid == uuid);
     }
