@@ -1,9 +1,9 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
-using DisplayLogic.Infrastructure.Resolvers;
-using DisplayLogic.Infrastructure.Test.Unit.DataMocks;
+using DisplayLogic.Domain.Services;
+using DisplayLogic.Domain.Test.Unit.DataMocks;
 
-namespace DisplayLogic.Infrastructure.Test.Unit.Resolvers;
+namespace DisplayLogic.Domain.Test.Unit.Resolvers;
 
 public class ArticleServiceTests
 {

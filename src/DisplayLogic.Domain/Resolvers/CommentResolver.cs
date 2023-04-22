@@ -2,7 +2,7 @@ using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
 using HotChocolate.Resolvers;
 
-namespace DisplayLogic.Infrastructure.Resolvers;
+namespace DisplayLogic.Domain.Resolvers;
 
 /// <inheritdoc />
 public class CommentResolver : ICommentResolver

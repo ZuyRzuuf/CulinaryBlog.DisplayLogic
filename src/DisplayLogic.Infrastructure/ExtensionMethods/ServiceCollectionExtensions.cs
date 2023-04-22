@@ -1,5 +1,6 @@
 using DisplayLogic.Domain.Interfaces;
-using DisplayLogic.Infrastructure.Resolvers;
+using DisplayLogic.Domain.Resolvers;
+using DisplayLogic.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DisplayLogic.Infrastructure.ExtensionMethods;

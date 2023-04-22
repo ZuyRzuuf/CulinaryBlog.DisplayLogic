@@ -1,7 +1,7 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
 
-namespace DisplayLogic.Infrastructure.Resolvers;
+namespace DisplayLogic.Domain.Services;
 
 /// <inheritdoc />
 public class RecipeService : IRecipeService
