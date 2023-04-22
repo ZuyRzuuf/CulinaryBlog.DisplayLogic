@@ -8,7 +8,7 @@ public class Category
     /// The unique identifier for the category.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// The name of the category.
     /// </summary>
