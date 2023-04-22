@@ -16,7 +16,7 @@ public static class RecipeMocks
                 new Ingredient { Id = 2, Name = "Coconut milk" }
             },
             Instructions = new List<string> { "Heat oil in a large pot...", "Add the curry paste..." },
-            Author = new Author { Id = 1, Username = "john_doe" },
+            Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
             PublishedDate = DateTime.Parse("2023-04-08"),
             ImageUrl = "https://example.com/images/thai-green-curry.jpg",
             Category = new Category { Id = 1, Name = "Curry" },
@@ -35,21 +35,21 @@ public static class RecipeMocks
                 {
                     Id = 1,
                     Content = "Delicious recipe! Will make it again.",
-                    Author = new Author { Id = 2, Username = "jane_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },
                     CreatedAt = DateTime.Parse("2023-04-09")
                 },
                 new Comment
                 {
                     Id = 2,
                     Content = "I love this dish!",
-                    Author = new Author { Id = 2, Username = "jane_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },
                     CreatedAt = DateTime.Parse("2023-04-10")
                 },
                 new Comment
                 {
                     Id = 3,
                     Content = "My family enjoyed it.",
-                    Author = new Author { Id = 2, Username = "jane_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },
                     CreatedAt = DateTime.Parse("2023-04-11")
                 }
             }
@@ -64,7 +64,7 @@ public static class RecipeMocks
                 new Ingredient { Id = 4, Name = "Coconut milk" }
             },
             Instructions = new List<string> { "Heat oil in a pan...", "Add the curry paste..." },
-            Author = new Author { Id = 2, Username = "jane_doe" },
+            Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },
             PublishedDate = DateTime.Parse("2023-04-12"),
             ImageUrl = "https://example.com/images/thai-red-curry.jpg",
             Category = new Category { Id = 1, Name = "Curry" },
@@ -83,21 +83,21 @@ public static class RecipeMocks
                 {
                     Id = 4,
                     Content = "So flavorful and delicious!",
-                    Author = new Author { Id = 1, Username = "john_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
                     CreatedAt = DateTime.Parse("2023-04-13")
                 },
                 new Comment
                 {
                     Id = 5,
                     Content = "This recipe is a keeper.",
-                    Author = new Author { Id = 1, Username = "john_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
                     CreatedAt = DateTime.Parse("2023-04-14")
                 },
                 new Comment
                 {
                     Id = 6,
                     Content = "Can't wait to make this again.",
-                    Author = new Author { Id = 1, Username = "john_doe" },
+                    Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
                     CreatedAt = DateTime.Parse("2023-04-15")
                 }
             }
