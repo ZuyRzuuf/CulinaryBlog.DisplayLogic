@@ -7,20 +7,20 @@ public class Query
     /// <summary>
     /// Get all articles
     /// </summary>
-    /// <param name="articleService"></param>
+    /// <param name="articleResolver"></param>
     /// <returns></returns>
-    public List<Article> GetArticles([Service] IArticleService articleService)
+    public List<Article> GetArticles([Service] IArticleResolver articleResolver)
     {
-        return articleService.GetAllArticles();
+        return articleResolver.GetAllArticles();
     }
 
     /// <summary>
     /// Get all recipes
     /// </summary>
-    /// <param name="recipeService"></param>
+    /// <param name="recipeResolver"></param>
     /// <returns></returns>
-    public List<Recipe> GetRecipes([Service] IRecipeService recipeService)
+    public List<Recipe> GetRecipes([Service] IRecipeResolver recipeResolver)
     {
-        return recipeService.GetAllRecipes();
+        return recipeResolver.GetAllRecipes();
     }
 }

@@ -1,10 +1,10 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
 
-namespace DisplayLogic.Domain.Services;
+namespace DisplayLogic.Domain.Resolvers;
 
 /// <inheritdoc />
-public class ArticleService : IArticleService
+public class ArticleResolver : IArticleResolver
 {
     private static readonly List<Article> _articles = new()
     {

@@ -1,3 +1,6 @@
+using DisplayLogic.Domain.Interfaces;
+using DisplayLogic.Domain.Resolvers;
+using DisplayLogic.Domain.Services;
 using DisplayLogic.Domain.Types;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +25,12 @@ public static class ServiceCollectionExtensions
             .AddType<DietType>()
             // .AddType<CommentsType>()
             ;
+
+        services
+            .AddScoped<IArticleResolver, ArticleResolver>()
+            .AddScoped<IRecipeResolver, RecipeResolver>()
+            .AddScoped<ICommentService, CommentService>()
+            .AddScoped<ICommentResolver, CommentResolver>();
 
         return services;
     }
