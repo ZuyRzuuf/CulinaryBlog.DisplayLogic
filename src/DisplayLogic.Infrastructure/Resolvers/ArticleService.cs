@@ -18,8 +18,8 @@ public class ArticleService : IArticleService
             ImageUrl = "https://example.com/images/thai-cuisine.jpg",
             Tags = new List<Tag>
             {
-                new Tag { Id = 1, Name = "Thai cuisine" },
-                new Tag { Id = 2, Name = "Asian cuisine" }
+                new Tag { Id = Guid.NewGuid(), Name = "Thai cuisine" },
+                new Tag { Id = Guid.NewGuid(), Name = "Asian cuisine" }
             },
             Comments = new List<Comment>
             {
@@ -49,8 +49,8 @@ public class ArticleService : IArticleService
             ImageUrl = "https://example.com/images/italian-pasta.jpg",
             Tags = new List<Tag>
             {
-                new Tag { Id = 3, Name = "Italian cuisine" },
-                new Tag { Id = 4, Name = "Pasta" }
+                new Tag { Id = Guid.NewGuid(), Name = "Italian cuisine" },
+                new Tag { Id = Guid.NewGuid(), Name = "Pasta" }
             },
             Comments = new List<Comment>
             {

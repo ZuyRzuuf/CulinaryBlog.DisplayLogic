@@ -21,22 +21,22 @@ public class RecipeService : IRecipeService
                 Title = "Spicy Thai Green Curry",
                 Ingredients = new List<Ingredient>
                 {
-                    new Ingredient { Id = 1, Name = "Green curry paste" },
-                    new Ingredient { Id = 2, Name = "Coconut milk" }
+                    new Ingredient { Id = Guid.NewGuid(), Name = "Green curry paste" },
+                    new Ingredient { Id = Guid.NewGuid(), Name = "Coconut milk" }
                 },
                 Instructions = new List<string> { "Heat oil in a large pot...", "Add the curry paste..." },
                 Author = sampleAuthor,
                 PublishedDate = DateTime.Parse("2023-04-08"),
                 ImageUrl = "https://example.com/images/thai-green-curry.jpg",
                 Category = new Category { Id = Guid.NewGuid(), Name = "Curry" },
-                Cuisine = new Cuisine { Id = 1, Name = "Thai" },
-                Diet = new Diet { Id = 1, Name = "Vegetarian" },
-                Method = new Method { Id = 1, Name = "Stovetop" },
-                Season = new Season { Id = 1, Name = "All seasons" },
+                Cuisine = new Cuisine { Id = Guid.NewGuid(), Name = "Thai" },
+                Diet = new Diet { Id = Guid.NewGuid(), Name = "Vegetarian" },
+                Method = new Method { Id = Guid.NewGuid(), Name = "Stovetop" },
+                Season = new Season { Id = Guid.NewGuid(), Name = "All seasons" },
                 Tags = new List<Tag>
                 {
-                    new Tag { Id = 3, Name = "Spicy" },
-                    new Tag { Id = 4, Name = "Green Curry" }
+                    new Tag { Id = Guid.NewGuid(), Name = "Spicy" },
+                    new Tag { Id = Guid.NewGuid(), Name = "Green Curry" }
                 },
                 Comments = new List<Comment>
                 {
@@ -69,22 +69,22 @@ public class RecipeService : IRecipeService
                 Title = "Tasty Thai Red Curry",
                 Ingredients = new List<Ingredient>
                 {
-                    new Ingredient { Id = 3, Name = "Red curry paste" },
-                    new Ingredient { Id = 4, Name = "Coconut milk" }
+                    new Ingredient { Id = Guid.NewGuid(), Name = "Red curry paste" },
+                    new Ingredient { Id = Guid.NewGuid(), Name = "Coconut milk" }
                 },
                 Instructions = new List<string> { "Heat oil in a pan...", "Add the curry paste..." },
                 Author = secondAuthor,
                 PublishedDate = DateTime.Parse("2023-04-12"),
                 ImageUrl = "https://example.com/images/thai-red-curry.jpg",
                 Category = new Category { Id = Guid.NewGuid(), Name = "Curry" },
-                Cuisine = new Cuisine { Id = 1, Name = "Thai" },
-                Diet = new Diet { Id = 2, Name = "Vegan" },
-                Method = new Method { Id = 1, Name = "Stovetop" },
-                Season = new Season { Id = 1, Name = "All Seasons" },
+                Cuisine = new Cuisine { Id = Guid.NewGuid(), Name = "Thai" },
+                Diet = new Diet { Id = Guid.NewGuid(), Name = "Vegan" },
+                Method = new Method { Id = Guid.NewGuid(), Name = "Stovetop" },
+                Season = new Season { Id = Guid.NewGuid(), Name = "All Seasons" },
                 Tags = new List<Tag>
                 {
-                    new Tag { Id = 5, Name = "Spicy" },
-                    new Tag { Id = 6, Name = "Red Curry" }
+                    new Tag { Id = Guid.NewGuid(), Name = "Spicy" },
+                    new Tag { Id = Guid.NewGuid(), Name = "Red Curry" }
                 },
                 Comments = new List<Comment>
                 {

@@ -8,7 +8,7 @@ public class Diet
     /// The unique identifier for the diet.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// The name of the diet.
     /// </summary>

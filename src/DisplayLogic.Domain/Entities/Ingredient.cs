@@ -8,7 +8,7 @@ public class Ingredient
     /// The unique identifier for the ingredient.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// The name of the ingredient.
     /// </summary>
