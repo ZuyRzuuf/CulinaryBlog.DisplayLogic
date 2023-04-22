@@ -42,21 +42,21 @@ public class RecipeService : IRecipeService
                 {
                     new Comment
                     {
-                        Id = 1,
+                        Id = Guid.NewGuid(),
                         Content = "Delicious recipe! Will make it again.",
                         Author = secondAuthor,
                         CreatedAt = DateTime.Parse("2023-04-09")
                     },
                     new Comment
                     {
-                        Id = 2,
+                        Id = Guid.NewGuid(),
                         Content = "I love this dish!",
                         Author = secondAuthor,
                         CreatedAt = DateTime.Parse("2023-04-10")
                     },
                     new Comment
                     {
-                        Id = 3,
+                        Id = Guid.NewGuid(),
                         Content = "My family enjoyed it.",
                         Author = secondAuthor,
                         CreatedAt = DateTime.Parse("2023-04-11")
@@ -90,21 +90,21 @@ public class RecipeService : IRecipeService
                 {
                     new Comment
                     {
-                        Id = 4,
+                        Id = Guid.NewGuid(),
                         Content = "So flavorful and delicious!",
                         Author = sampleAuthor,
                         CreatedAt = DateTime.Parse("2023-04-13")
                     },
                     new Comment
                     {
-                        Id = 5,
+                        Id = Guid.NewGuid(),
                         Content = "This recipe is a keeper.",
                         Author = sampleAuthor,
                         CreatedAt = DateTime.Parse("2023-04-14")
                     },
                     new Comment
                     {
-                        Id = 6,
+                        Id = Guid.NewGuid(),
                         Content = "Can't wait to make this again.",
                         Author = sampleAuthor,
                         CreatedAt = DateTime.Parse("2023-04-15")

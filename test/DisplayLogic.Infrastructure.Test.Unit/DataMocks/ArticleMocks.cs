@@ -23,14 +23,14 @@ public static class ArticleMocks
             {
                 new Comment
                 {
-                    Id = 1,
+                    Id = Guid.NewGuid(),
                     Content = "Great article! I love Thai food.",
                     Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },
                     CreatedAt = new DateTime(2023, 4, 11)
                 },
                 new Comment
                 {
-                    Id = 2,
+                    Id = Guid.NewGuid(),
                     Content = "Thai cuisine is amazing!",
                     Author = new Author { Id = Guid.NewGuid(), Username = "mark_smith" },
                     CreatedAt = new DateTime(2023, 4, 12)
@@ -54,14 +54,14 @@ public static class ArticleMocks
             {
                 new Comment
                 {
-                    Id = 3,
+                    Id = Guid.NewGuid(),
                     Content = "I can't wait to try some of these pasta dishes!",
                     Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
                     CreatedAt = new DateTime(2023, 4, 9)
                 },
                 new Comment
                 {
-                    Id = 4,
+                    Id = Guid.NewGuid(),
                     Content = "The article is very informative!",
                     Author = new Author { Id = Guid.NewGuid(), Username = "mark_smith" },
                     CreatedAt = new DateTime(2023, 4, 10)

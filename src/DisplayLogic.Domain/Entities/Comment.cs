@@ -10,7 +10,7 @@ public class Comment
     /// The unique identifier for the comment.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// The content of the comment.
     /// </summary>

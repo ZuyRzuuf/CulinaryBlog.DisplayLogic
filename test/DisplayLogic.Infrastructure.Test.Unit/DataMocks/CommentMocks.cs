@@ -8,7 +8,7 @@ public class CommentMocks
     {
         new Comment
         {
-            Id = 1,
+            Id = Guid.NewGuid(),
             Content = "Great article!",
             Author = new Author { Id = Guid.NewGuid(), Username = "author1" },
             CreatedAt = DateTime.Now.AddMinutes(-5),
@@ -16,7 +16,7 @@ public class CommentMocks
         },
         new Comment
         {
-            Id = 2,
+            Id = Guid.NewGuid(),
             Content = "I found this very helpful.",
             Author = new Author { Id = Guid.NewGuid(), Username = "author2" },
             CreatedAt = DateTime.Now.AddMinutes(-10),
@@ -24,7 +24,7 @@ public class CommentMocks
         },
         new Comment
         {
-            Id = 3,
+            Id = Guid.NewGuid(),
             Content = "Interesting insights.",
             Author = new Author { Id = Guid.NewGuid(), Username = "author3" },
             CreatedAt = DateTime.Now.AddMinutes(-15),
@@ -32,7 +32,7 @@ public class CommentMocks
         },
         new Comment
         {
-            Id = 4,
+            Id = Guid.NewGuid(),
             Content = "I learned a lot from this article.",
             Author = new Author { Id = Guid.NewGuid(), Username = "author4" },
             CreatedAt = DateTime.Now.AddMinutes(-20),
@@ -40,7 +40,7 @@ public class CommentMocks
         },
         new Comment
         {
-            Id = 5,
+            Id = Guid.NewGuid(),
             Content = "This is a must-read!",
             Author = new Author { Id = Guid.NewGuid(), Username = "author5" },
             CreatedAt = DateTime.Now.AddMinutes(-25),
