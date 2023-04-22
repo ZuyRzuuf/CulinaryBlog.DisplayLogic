@@ -10,7 +10,7 @@ public class ArticleService : IArticleService
     {
         new Article
         {
-            Uuid = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285"),
+            Id = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285"),
             Title = "Exploring the Flavors of Thai Cuisine",
             Content = "Thai cuisine is known for its bold flavors...",
             Author = new Author { Id = Guid.Parse("e97ffece-bca2-4f06-84f9-a2d792afea20"), Username = "john_doe" },
@@ -41,7 +41,7 @@ public class ArticleService : IArticleService
         },
         new Article
         {
-            Uuid = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188"),
+            Id = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188"),
             Title = "The Magic of Italian Pasta",
             Content = "Italian pasta dishes are a staple in many households...",
             Author = new Author { Id = Guid.Parse("689cffbf-2c88-4cb0-abce-f6bea1b28f3b"), Username = "jane_doe" },
@@ -78,6 +78,6 @@ public class ArticleService : IArticleService
     /// <inheritdoc />
     public Article? GetArticleById(Guid uuid)
     {
-        return _articles.FirstOrDefault(article => article.Uuid == uuid);
+        return _articles.FirstOrDefault(article => article.Id == uuid);
     }
 }

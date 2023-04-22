@@ -8,7 +8,7 @@ public static class ArticleMocks
     {
         new Article
         {
-            Uuid = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285"),
+            Id = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285"),
             Title = "Exploring the Flavors of Thai Cuisine",
             Content = "Thai cuisine is known for its bold flavors...",
             Author = new Author { Id = Guid.NewGuid(), Username = "john_doe" },
@@ -39,7 +39,7 @@ public static class ArticleMocks
         },
         new Article
         {
-            Uuid = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188"),
+            Id = Guid.Parse("34507ff9-6b73-4bae-98c3-af2ce2668188"),
             Title = "The Magic of Italian Pasta",
             Content = "Italian pasta dishes are a staple in many households...",
             Author = new Author { Id = Guid.NewGuid(), Username = "jane_doe" },

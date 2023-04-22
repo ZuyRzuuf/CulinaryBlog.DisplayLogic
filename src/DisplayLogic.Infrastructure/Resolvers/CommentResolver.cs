@@ -17,7 +17,7 @@ public class CommentResolver : ICommentResolver
     /// <inheritdoc />
     public List<Comment> GetCommentsByArticleId(IResolverContext context)
     {
-        var articleUuid = context.Parent<Article>().Uuid;
+        var articleUuid = context.Parent<Article>().Id;
         return _commentService.GetCommentsByArticleId(articleUuid);
     }
 }
