@@ -8,7 +8,7 @@ public class RecipeType : ObjectType<Recipe>
 {
     protected override void Configure(IObjectTypeDescriptor<Recipe> descriptor)
     {
-        descriptor.Field(f => f.Uuid).Type<NonNullType<UuidType>>();
+        descriptor.Field(f => f.Id).Type<NonNullType<UuidType>>();
         descriptor.Field(f => f.Title).Type<NonNullType<StringType>>();
         descriptor.Field(f => f.Ingredients).Type<NonNullType<ListType<NonNullType<IngredientType>>>>();
         descriptor.Field(f => f.Instructions).Type<NonNullType<ListType<NonNullType<StringType>>>>();
@@ -31,7 +31,7 @@ public class RecipeType : ObjectType<Recipe>
                 try
                 {
                     var recipeResolver = ctx.Service<IRecipeResolver>();
-                    var comments = await recipeResolver.GetCommentsByRecipeUuidAsync(ctx.Parent<Recipe>().Uuid);
+                    var comments = await recipeResolver.GetCommentsByRecipeUuidAsync(ctx.Parent<Recipe>().Id);
                     return comments;
                 }
                 catch (Exception ex)

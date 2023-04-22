@@ -7,7 +7,7 @@ public class ArticleType : ObjectType<Article>
 {
     protected override void Configure(IObjectTypeDescriptor<Article> descriptor)
     {
-        descriptor.Field(a => a.Uuid).Type<NonNullType<UuidType>>();
+        descriptor.Field(a => a.Id).Type<NonNullType<UuidType>>();
         descriptor.Field(a => a.Title).Type<NonNullType<StringType>>();
         descriptor.Field(a => a.Content).Type<NonNullType<StringType>>();
         descriptor.Field(a => a.Author).Type<NonNullType<AuthorType>>();

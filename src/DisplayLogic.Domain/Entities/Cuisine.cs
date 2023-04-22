@@ -8,7 +8,7 @@ public class Cuisine
     /// The unique identifier for the cuisine.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// The name of the cuisine.
     /// </summary>

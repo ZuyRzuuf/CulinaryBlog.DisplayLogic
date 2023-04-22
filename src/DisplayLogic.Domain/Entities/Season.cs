@@ -8,7 +8,7 @@ public class Season
     /// Gets or sets the unique identifier of the season.
     /// </summary>
     [Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// Gets or sets the name of the season.
     /// </summary>

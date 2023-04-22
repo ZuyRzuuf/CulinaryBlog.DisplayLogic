@@ -32,7 +32,7 @@ public class ArticleServiceTests
     public void GetArticleById_WithExistingId_ReturnsArticle()
     {
         // Arrange
-        var existingId = _testArticles.First().Uuid;
+        var existingId = _testArticles.First().Id;
         
         // Act
         var result = _articleService.GetArticleById(existingId);
@@ -40,7 +40,7 @@ public class ArticleServiceTests
         // Assert
         Assert.NotNull(result);
         Assert.IsType<Article>(result);
-        Assert.Equal(existingId, result?.Uuid);
+        Assert.Equal(existingId, result?.Id);
     }
 
     [Fact]

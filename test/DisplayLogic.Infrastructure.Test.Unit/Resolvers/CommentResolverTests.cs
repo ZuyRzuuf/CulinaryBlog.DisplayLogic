@@ -28,7 +28,7 @@ public class CommentResolverTests
     {
         var existingId = _testComments.First().ArticleId;
         var expectedComments = _testComments.Where(c => c.ArticleId == existingId).ToList();
-        var mockContext = CreateResolverContext(new Article { Uuid = existingId });
+        var mockContext = CreateResolverContext(new Article { Id = existingId });
 
         var result = _commentResolver.GetCommentsByArticleId(mockContext);
 
@@ -41,7 +41,7 @@ public class CommentResolverTests
     public void GetCommentsByArticleId_WithNonExistingId_ReturnsEmptyList()
     {
         var nonExistingId = Guid.NewGuid();
-        var mockContext = CreateResolverContext(new Article { Uuid = nonExistingId });
+        var mockContext = CreateResolverContext(new Article { Id = nonExistingId });
 
         var result = _commentResolver.GetCommentsByArticleId(mockContext);
 

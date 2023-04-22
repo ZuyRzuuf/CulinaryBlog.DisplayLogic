@@ -11,7 +11,7 @@ public class Article
     /// Gets or sets the unique identifier of the article.
     /// </summary>
     [Required]
-    public Guid Uuid { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
     /// Gets or sets the title of the article.
