@@ -17,7 +17,7 @@ public class RecipeService : IRecipeService
         {
             new Recipe
             {
-                Uuid = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377"),
+                Id = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377"),
                 Title = "Spicy Thai Green Curry",
                 Ingredients = new List<Ingredient>
                 {
@@ -65,7 +65,7 @@ public class RecipeService : IRecipeService
             },
             new Recipe
             {
-                Uuid = Guid.Parse("4f9b4d94-3c82-431f-8d99-ea3956324b0b"),
+                Id = Guid.Parse("4f9b4d94-3c82-431f-8d99-ea3956324b0b"),
                 Title = "Tasty Thai Red Curry",
                 Ingredients = new List<Ingredient>
                 {
@@ -123,6 +123,6 @@ public class RecipeService : IRecipeService
     /// <inheritdoc />
     public Recipe? GetRecipeById(Guid uuid)
     {
-        return _recipes.FirstOrDefault(recipe => recipe.Uuid == uuid);
+        return _recipes.FirstOrDefault(recipe => recipe.Id == uuid);
     }
 }

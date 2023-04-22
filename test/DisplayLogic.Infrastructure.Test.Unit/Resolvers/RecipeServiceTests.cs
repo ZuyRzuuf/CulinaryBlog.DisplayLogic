@@ -32,7 +32,7 @@ public class RecipeServiceTests
     public void GetRecipeById_WithExistingId_ReturnsRecipe()
     {
         // Arrange
-        var existingId = _testRecipes.First().Uuid;
+        var existingId = _testRecipes.First().Id;
         
         // Act
         var result = _recipeService.GetRecipeById(existingId);
@@ -40,7 +40,7 @@ public class RecipeServiceTests
         // Assert
         Assert.NotNull(result);
         Assert.IsType<Recipe>(result);
-        Assert.Equal(existingId, result?.Uuid);
+        Assert.Equal(existingId, result?.Id);
     }
 
     [Fact]

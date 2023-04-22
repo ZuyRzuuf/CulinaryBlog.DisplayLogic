@@ -20,7 +20,7 @@ builder.Services
 //         }
 //
 //         type Recipe {
-//             uuid: Uuid!
+//             uuid: Id!
 //             title: String!
 //         }
 //         type Recipes {
