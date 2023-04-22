@@ -1,6 +1,6 @@
 using DisplayLogic.Domain.Entities;
 
-namespace DisplayLogic.Infrastructure.Test.Unit.DataMocks;
+namespace DisplayLogic.Domain.Test.Unit.DataMocks;
 
 public class CommentMocks
 {
