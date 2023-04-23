@@ -6,7 +6,7 @@ namespace DisplayLogic.Domain.Resolvers;
 /// <inheritdoc />
 public class ArticleResolver : IArticleResolver
 {
-    private static readonly List<Article> _articles = new()
+    private static readonly List<Article> Articles = new()
     {
         new Article
         {
@@ -39,11 +39,11 @@ public class ArticleResolver : IArticleResolver
     };
 
     /// <inheritdoc />
-    public List<Article> GetAllArticles() => _articles;
+    public List<Article> GetAllArticles() => Articles;
 
     /// <inheritdoc />
     public Article? GetArticleById(Guid uuid)
     {
-        return _articles.FirstOrDefault(article => article.Id == uuid);
+        return Articles.FirstOrDefault(article => article.Id == uuid);
     }
 }

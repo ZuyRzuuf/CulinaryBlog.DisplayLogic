@@ -1,5 +1,4 @@
 using DisplayLogic.Domain.Entities;
-using HotChocolate.Resolvers;
 
 namespace DisplayLogic.Domain.Interfaces;
 

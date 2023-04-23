@@ -70,6 +70,5 @@ public class CommentResolver : ICommentResolver
     {
         var recipeId = context.Parent<Recipe>().Id;
         return Task.FromResult(_comments.Where(c => c.RecipeId == recipeId).ToList());
-        // return _comments.FindAll(c => c.RecipeId == recipeUuid).ToList();
     }
 }

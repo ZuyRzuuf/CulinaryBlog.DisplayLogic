@@ -6,13 +6,10 @@ namespace DisplayLogic.Domain.Resolvers;
 /// <inheritdoc />
 public class RecipeResolver : IRecipeResolver
 {
-    private readonly ICommentResolver _commentResolver;
     private readonly List<Recipe> _recipes;
 
-    public RecipeResolver(ICommentResolver commentResolver)
+    public RecipeResolver()
     {
-        _commentResolver = commentResolver;
-        
         var sampleAuthor = new Author { Id = Guid.Parse("8c6a9b4c-f504-4912-b25a-c8deee55bf57"), Username = "john_doe" };
         var secondAuthor = new Author { Id = Guid.Parse("c17fd06b-7ef5-4b2a-95b0-2dd692585eb3"), Username = "jane_doe" };
 

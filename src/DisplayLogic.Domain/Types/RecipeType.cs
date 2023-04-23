@@ -1,6 +1,5 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace DisplayLogic.Domain.Types;
 
