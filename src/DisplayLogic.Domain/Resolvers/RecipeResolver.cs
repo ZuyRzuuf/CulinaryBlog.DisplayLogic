@@ -6,12 +6,12 @@ namespace DisplayLogic.Domain.Resolvers;
 /// <inheritdoc />
 public class RecipeResolver : IRecipeResolver
 {
-    private readonly ICommentService _commentService;
+    private readonly ICommentResolver _commentResolver;
     private readonly List<Recipe> _recipes;
 
-    public RecipeResolver(ICommentService commentService)
+    public RecipeResolver(ICommentResolver commentResolver)
     {
-        _commentService = commentService;
+        _commentResolver = commentResolver;
         
         var sampleAuthor = new Author { Id = Guid.Parse("8c6a9b4c-f504-4912-b25a-c8deee55bf57"), Username = "john_doe" };
         var secondAuthor = new Author { Id = Guid.Parse("c17fd06b-7ef5-4b2a-95b0-2dd692585eb3"), Username = "jane_doe" };
@@ -40,30 +40,6 @@ public class RecipeResolver : IRecipeResolver
                 {
                     new Tag { Id = Guid.NewGuid(), Name = "Spicy" },
                     new Tag { Id = Guid.NewGuid(), Name = "Green Curry" }
-                },
-                Comments = new List<Comment>
-                {
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "Delicious recipe! Will make it again.",
-                        Author = secondAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-09")
-                    },
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "I love this dish!",
-                        Author = secondAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-10")
-                    },
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "My family enjoyed it.",
-                        Author = secondAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-11")
-                    }
                 }
             },
             new Recipe
@@ -88,30 +64,6 @@ public class RecipeResolver : IRecipeResolver
                 {
                     new Tag { Id = Guid.NewGuid(), Name = "Spicy" },
                     new Tag { Id = Guid.NewGuid(), Name = "Red Curry" }
-                },
-                Comments = new List<Comment>
-                {
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "So flavorful and delicious!",
-                        Author = sampleAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-13")
-                    },
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "This recipe is a keeper.",
-                        Author = sampleAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-14")
-                    },
-                    new Comment
-                    {
-                        Id = Guid.NewGuid(),
-                        Content = "Can't wait to make this again.",
-                        Author = sampleAuthor,
-                        CreatedAt = DateTime.Parse("2023-04-15")
-                    }
                 }
             }
         };
@@ -127,11 +79,5 @@ public class RecipeResolver : IRecipeResolver
     public Recipe? GetRecipeById(Guid uuid)
     {
         return _recipes.FirstOrDefault(recipe => recipe.Id == uuid);
-    }
-
-    /// <inheritdoc />
-    public async Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid)
-    {
-        return await _commentService.GetCommentsByRecipeUuidAsync(recipeUuid);
     }
 }

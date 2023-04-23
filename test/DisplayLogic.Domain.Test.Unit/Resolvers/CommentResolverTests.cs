@@ -1,58 +1,47 @@
 using DisplayLogic.Domain.Entities;
-using DisplayLogic.Domain.Interfaces;
 using DisplayLogic.Domain.Resolvers;
 using HotChocolate.Resolvers;
-using DisplayLogic.Domain.Test.Unit.DataMocks;
 
 namespace DisplayLogic.Domain.Test.Unit.Resolvers;
 
 public class CommentResolverTests
 {
-    private readonly Mock<ICommentService> _mockCommentService;
     private readonly CommentResolver _commentResolver;
-    private readonly List<Comment> _testComments;
+    private readonly Mock<IResolverContext> _mockResolverContext;
 
     public CommentResolverTests()
     {
-        _mockCommentService = new Mock<ICommentService>();
-        _commentResolver = new CommentResolver(_mockCommentService.Object);
-
-        _testComments = CommentMocks.TestComments;
-
-        _mockCommentService.Setup(service => service.GetCommentsByArticleId(It.IsAny<Guid>()))
-            .Returns((Guid articleId) => _testComments.Where(comment => comment.ArticleId == articleId).ToList());
+        _commentResolver = new CommentResolver();
+        _mockResolverContext = new Mock<IResolverContext>();
     }
 
     [Fact]
-    public void GetCommentsByArticleId_WithExistingId_ReturnsComments()
+    public void GetCommentsByArticleId_Should_Return_Correct_Comments()
     {
-        var existingId = _testComments.First().ArticleId;
-        var expectedComments = _testComments.Where(c => c.ArticleId == existingId).ToList();
-        var mockContext = CreateResolverContext(new Article { Id = existingId });
+        // Arrange
+        var article = new Article { Id = Guid.Parse("3d5d4cd1-b6f4-4ae4-a25a-918e185d6285") };
+        _mockResolverContext.Setup(context => context.Parent<Article>()).Returns(article);
 
-        var result = _commentResolver.GetCommentsByArticleId(mockContext);
+        // Act
+        var comments = _commentResolver.GetCommentsByArticleId(_mockResolverContext.Object);
 
-        Assert.NotNull(result);
-        Assert.Equal(expectedComments.Count, result.Count);
-        Assert.All(result, comment => Assert.Equal(existingId, comment.ArticleId));
+        // Assert
+        Assert.Single(comments);
+        Assert.Equal("First sample comment.", comments[0].Content);
     }
 
     [Fact]
-    public void GetCommentsByArticleId_WithNonExistingId_ReturnsEmptyList()
+    public async Task GetCommentsByRecipeIdAsync_Should_Return_Correct_Comments()
     {
-        var nonExistingId = Guid.NewGuid();
-        var mockContext = CreateResolverContext(new Article { Id = nonExistingId });
+        // Arrange
+        var recipe = new Recipe { Id = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377") };
+        _mockResolverContext.Setup(context => context.Parent<Recipe>()).Returns(recipe);
 
-        var result = _commentResolver.GetCommentsByArticleId(mockContext);
+        // Act
+        var comments = await _commentResolver.GetCommentsByRecipeIdAsync(_mockResolverContext.Object);
 
-        Assert.NotNull(result);
-        Assert.Empty(result);
-    }
-
-    private IResolverContext CreateResolverContext(Article article)
-    {
-        var mockResolverContext = new Mock<IResolverContext>();
-        mockResolverContext.Setup(context => context.Parent<Article>()).Returns(article);
-        return mockResolverContext.Object;
+        // Assert
+        Assert.Single(comments);
+        Assert.Equal("Second sample comment.", comments[0].Content);
     }
 }

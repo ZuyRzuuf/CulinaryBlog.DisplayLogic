@@ -20,23 +20,6 @@ public class ArticleResolver : IArticleResolver
             {
                 new Tag { Id = Guid.NewGuid(), Name = "Thai cuisine" },
                 new Tag { Id = Guid.NewGuid(), Name = "Asian cuisine" }
-            },
-            Comments = new List<Comment>
-            {
-                new Comment
-                {
-                    Id = Guid.NewGuid(),
-                    Content = "Great article! I love Thai food.",
-                    Author = new Author { Id = Guid.Parse("f7cbdcf2-6291-42af-89f2-82e2dc3380bd"), Username = "jane_doe" },
-                    CreatedAt = new DateTime(2023, 4, 11)
-                },
-                new Comment
-                {
-                    Id = Guid.NewGuid(),
-                    Content = "Thai cuisine is amazing!",
-                    Author = new Author { Id = Guid.Parse("164127d7-c6f7-4481-9671-1b986a462833"), Username = "mark_smith" },
-                    CreatedAt = new DateTime(2023, 4, 12)
-                }
             }
         },
         new Article
@@ -51,23 +34,6 @@ public class ArticleResolver : IArticleResolver
             {
                 new Tag { Id = Guid.NewGuid(), Name = "Italian cuisine" },
                 new Tag { Id = Guid.NewGuid(), Name = "Pasta" }
-            },
-            Comments = new List<Comment>
-            {
-                new Comment
-                {
-                    Id = Guid.NewGuid(),
-                    Content = "I can't wait to try some of these pasta dishes!",
-                    Author = new Author { Id = Guid.Parse("e97ffece-bca2-4f06-84f9-a2d792afea20"), Username = "john_doe" },
-                    CreatedAt = new DateTime(2023, 4, 9)
-                },
-                new Comment
-                {
-                    Id = Guid.NewGuid(),
-                    Content = "The article is very informative!",
-                    Author = new Author { Id = Guid.Parse("164127d7-c6f7-4481-9671-1b986a462833"), Username = "mark_smith" },
-                    CreatedAt = new DateTime(2023, 4, 10)
-                }
             }
         }
     };

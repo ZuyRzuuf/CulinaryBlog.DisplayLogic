@@ -1,40 +1,57 @@
-using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
 using DisplayLogic.Domain.Resolvers;
-using DisplayLogic.Domain.Test.Unit.DataMocks;
 
-namespace DisplayLogic.Domain.Test.Unit.Resolvers;
-
-public class RecipeResolverTests
+namespace DisplayLogic.Tests
 {
-    private readonly RecipeResolver _recipeResolver;
-    private readonly Mock<ICommentService> _commentServiceMock;
-    private readonly List<Comment> _testComments;
-
-    public RecipeResolverTests()
+    public class RecipeResolverTests
     {
-        _commentServiceMock = new Mock<ICommentService>();
-        _recipeResolver = new RecipeResolver(_commentServiceMock.Object);
-        _testComments = CommentMocks.TestComments;
-    }
+        private readonly RecipeResolver _recipeResolver;
 
-    [Fact]
-    public async Task GetCommentsByRecipeUuidAsync_ReturnsCommentsForRecipe()
-    {
-        // Arrange
-        var testRecipeUuid = Guid.Parse(_testComments[0].RecipeId.ToString());
+        public RecipeResolverTests()
+        {
+            Mock<ICommentResolver> mockCommentResolver = new();
+            _recipeResolver = new RecipeResolver(mockCommentResolver.Object);
+        }
 
-        _commentServiceMock
-            .Setup(cs => cs.GetCommentsByRecipeUuidAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(_testComments.FindAll(c => c.RecipeId == testRecipeUuid));
+        [Fact]
+        public void GetAllRecipes_ReturnsAllRecipes()
+        {
+            // Act
+            var recipes = _recipeResolver.GetAllRecipes();
 
-        // Act
-        var result = await _recipeResolver.GetCommentsByRecipeUuidAsync(testRecipeUuid);
+            // Assert
+            Assert.NotNull(recipes);
+            Assert.Equal(2, recipes.Count);
+            Assert.Equal("Spicy Thai Green Curry", recipes[0].Title);
+            Assert.Equal("Tasty Thai Red Curry", recipes[1].Title);
+        }
 
-        // Assert
-        Assert.NotNull(result);
-        Assert.NotEmpty(result);
-        Assert.Equal(_testComments.FindAll(c => c.RecipeId == testRecipeUuid).Count, result.Count);
-        _commentServiceMock.Verify(cs => cs.GetCommentsByRecipeUuidAsync(testRecipeUuid), Times.Once);
+        [Fact]
+        public void GetRecipeById_ReturnsRecipe_WhenIdExists()
+        {
+            // Arrange
+            Guid recipeId = Guid.Parse("06afd62f-33fe-4271-952b-da9a1241c377");
+
+            // Act
+            var recipe = _recipeResolver.GetRecipeById(recipeId);
+
+            // Assert
+            Assert.NotNull(recipe);
+            Assert.Equal(recipeId, recipe.Id);
+            Assert.Equal("Spicy Thai Green Curry", recipe.Title);
+        }
+
+        [Fact]
+        public void GetRecipeById_ReturnsNull_WhenIdDoesNotExist()
+        {
+            // Arrange
+            Guid nonExistentRecipeId = Guid.NewGuid();
+
+            // Act
+            var recipe = _recipeResolver.GetRecipeById(nonExistentRecipeId);
+
+            // Assert
+            Assert.Null(recipe);
+        }
     }
 }
