@@ -17,20 +17,16 @@ public class QueryType : ObjectType<Query>
 
         descriptor.Field("blogData")
             .Type<BlogDataType>()
-            .Argument("articleId", a => a.Type<UuidType>())
+            .Argument("articleId", arg => arg.Type<UuidType>().DefaultValue(Guid.Empty))
             .Resolve<BlogData>(ctx =>
             {
                 var articleResolver = ctx.Service<IArticleResolver>();
                 var recipeResolver = ctx.Service<IRecipeResolver>();
-                
+
                 var articles = ctx.Parent<Query>().GetArticles(articleResolver);
                 var recipes = ctx.Parent<Query>().GetRecipes(recipeResolver);
-
-                var articleId = ctx.ArgumentValue<Guid?>("articleId");
-                // Use the passed articleId if it's provided, otherwise set it to null
-                var article = articleId.HasValue
-                    ? ctx.Parent<Query>().GetArticleById(articleResolver, articleId.Value)
-                    : null;
+                var articleId = ctx.ArgumentValue<Guid>("articleId");
+                var article = articleId != Guid.Empty ? articleResolver.GetArticleById(articleId) : null;
 
                 return new BlogData
                 {
