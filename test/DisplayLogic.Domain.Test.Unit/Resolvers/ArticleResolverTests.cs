@@ -1,26 +1,26 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
-using DisplayLogic.Domain.Services;
+using DisplayLogic.Domain.Resolvers;
 using DisplayLogic.Domain.Test.Unit.DataMocks;
 
 namespace DisplayLogic.Domain.Test.Unit.Resolvers;
 
-public class ArticleServiceTests
+public class ArticleResolverTests
 {
-    private readonly IArticleService _articleService;
+    private readonly IArticleResolver _articleResolver;
     private readonly List<Article> _testArticles;
     
-    public ArticleServiceTests()
+    public ArticleResolverTests()
     {
         _testArticles = ArticleMocks.TestArticles;
-        _articleService = new ArticleService();
+        _articleResolver = new ArticleResolver();
     }
 
     [Fact]
     public void GetAllArticles_ReturnsListOfArticles()
     {
         // Act
-        var result = _articleService.GetAllArticles();
+        var result = _articleResolver.GetAllArticles();
 
         // Assert
         Assert.NotNull(result);
@@ -35,7 +35,7 @@ public class ArticleServiceTests
         var existingId = _testArticles.First().Id;
         
         // Act
-        var result = _articleService.GetArticleById(existingId);
+        var result = _articleResolver.GetArticleById(existingId);
 
         // Assert
         Assert.NotNull(result);
@@ -50,7 +50,7 @@ public class ArticleServiceTests
         var nonExistingId = Guid.Parse("00000000-0000-0000-0000-000000000000");
     
         // Act
-        var result = _articleService.GetArticleById(nonExistingId);
+        var result = _articleResolver.GetArticleById(nonExistingId);
 
         // Assert
         Assert.Null(result);

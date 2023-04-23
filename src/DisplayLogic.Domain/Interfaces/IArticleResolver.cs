@@ -5,7 +5,7 @@ namespace DisplayLogic.Domain.Interfaces;
 /// <summary>
 /// Represents a service for articles.
 /// </summary>
-public interface IArticleService
+public interface IArticleResolver
 {
     /// <summary>
     /// Gets all articles.

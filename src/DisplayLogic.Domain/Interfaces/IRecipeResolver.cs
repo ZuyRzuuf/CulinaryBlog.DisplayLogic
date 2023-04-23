@@ -1,5 +1,4 @@
 using DisplayLogic.Domain.Entities;
-using HotChocolate.Resolvers;
 
 namespace DisplayLogic.Domain.Interfaces;
 
@@ -9,11 +8,18 @@ namespace DisplayLogic.Domain.Interfaces;
 public interface IRecipeResolver
 {
     /// <summary>
-    /// This method is used to resolve the comments of a recipe.
+    /// Get all recipes
     /// </summary>
-    /// <param name="recipeUuid"></param>
     /// <returns>
-    /// A list of comments.
+    /// List of recipes
     /// </returns>
-    Task<List<Comment>> GetCommentsByRecipeUuidAsync(Guid recipeUuid);
+    List<Recipe> GetAllRecipes();
+    /// <summary>
+    /// Get recipe by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>
+    /// Recipe
+    /// </returns>
+    Recipe? GetRecipeById(Guid id);
 }

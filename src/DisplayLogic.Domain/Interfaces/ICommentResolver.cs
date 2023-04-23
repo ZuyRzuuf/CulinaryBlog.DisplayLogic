@@ -16,4 +16,11 @@ public interface ICommentResolver
     /// A list of all comments for article with the specified unique identifier.
     /// </returns>
     public List<Comment> GetCommentsByArticleId(IResolverContext context);
+
+    /// <summary>
+    /// Gets all comments for recipe with the specified unique identifier.
+    /// </summary>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    public Task<List<Comment>> GetCommentsByRecipeIdAsync(IResolverContext context);
 }
