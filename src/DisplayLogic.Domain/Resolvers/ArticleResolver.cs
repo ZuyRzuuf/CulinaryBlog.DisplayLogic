@@ -42,8 +42,8 @@ public class ArticleResolver : IArticleResolver
     public List<Article> GetAllArticles() => Articles;
 
     /// <inheritdoc />
-    public Article? GetArticleById(Guid uuid)
+    public Article? GetArticleById(Guid id)
     {
-        return Articles.FirstOrDefault(article => article.Id == uuid);
+        return Articles.FirstOrDefault(article => article.Id == id);
     }
 }
