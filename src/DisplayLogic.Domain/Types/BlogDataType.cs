@@ -33,5 +33,24 @@ public class BlogDataType : ObjectType<BlogData>
                 
                 return null;
             });
+        
+        descriptor.Field<BlogData>(f => f.Recipe)
+            .Type<RecipeType>()
+            .Argument("recipeId", a => a.Type<NonNullType<IdType>>())
+            .Resolve(ctx =>
+            {
+                var recipeId = ctx.ArgumentValue<Guid>("recipeId");
+                var recipeResolver = ctx.Service<IRecipeResolver>();
+                var recipe = recipeResolver.GetRecipeById(recipeId);
+
+                if (recipe != null) return recipe;
+                
+                ctx.ReportError(ErrorBuilder.New()
+                    .SetMessage($"Recipe with id {recipeId} not found.")
+                    .SetCode("RECIPE_NOT_FOUND")
+                    .Build());
+                
+                return null;
+            });
     }
 }

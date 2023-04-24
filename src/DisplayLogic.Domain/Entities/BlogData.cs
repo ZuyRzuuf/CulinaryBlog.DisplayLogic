@@ -14,4 +14,8 @@ public class BlogData
     /// The list of recipes.
     /// </summary>
     public List<Recipe> Recipes { get; set; } = new List<Recipe>();
+    /// <summary>
+    /// Recipe by id
+    /// </summary>
+    public Recipe? Recipe { get; set; }
 }
