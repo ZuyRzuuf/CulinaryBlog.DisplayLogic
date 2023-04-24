@@ -23,8 +23,15 @@ public class BlogDataType : ObjectType<BlogData>
                 var articleId = ctx.ArgumentValue<Guid>("articleId");
                 var articleResolver = ctx.Service<IArticleResolver>();
                 var article = articleResolver.GetArticleById(articleId);
+
+                if (article != null) return article;
                 
-                return article;
+                ctx.ReportError(ErrorBuilder.New()
+                    .SetMessage($"Article with id {articleId} not found.")
+                    .SetCode("ARTICLE_NOT_FOUND")
+                    .Build());
+                
+                return null;
             });
     }
 }
