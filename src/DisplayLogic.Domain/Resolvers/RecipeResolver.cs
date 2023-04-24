@@ -73,8 +73,8 @@ public class RecipeResolver : IRecipeResolver
     }
 
     /// <inheritdoc />
-    public Recipe? GetRecipeById(Guid uuid)
+    public Recipe? GetRecipeById(Guid id)
     {
-        return _recipes.FirstOrDefault(recipe => recipe.Id == uuid);
+        return _recipes.FirstOrDefault(recipe => recipe.Id == id);
     }
 }
