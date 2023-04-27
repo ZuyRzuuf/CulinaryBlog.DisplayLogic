@@ -1,4 +1,5 @@
 using DisplayLogic.Domain.Entities;
+using DisplayLogic.Domain.Filters;
 using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Domain.Resolvers;
@@ -45,5 +46,28 @@ public class ArticleResolver : IArticleResolver
     public Article? GetArticleById(Guid id)
     {
         return Articles.FirstOrDefault(article => article.Id == id);
+    }
+
+    /// <inheritdoc />
+    public List<Article> GetFilteredArticles(ArticleFilter? filters)
+    {
+        var articles = Articles;
+
+        if (filters == null) return articles;
+        
+        if (filters.Ids != null && filters.Ids.Any())
+        {
+            articles = articles.Where(article => filters.Ids.Contains(article.Id)).ToList();
+        }
+        else if (filters.TagIds != null && filters.TagIds.Any())
+        {
+            articles = articles.Where(article => article.Tags.Any(tag => filters.TagIds.Contains(tag.Id))).ToList();
+        }
+        else if (filters.Id != null)
+        {
+            articles = articles.Where(article => article.Id == filters.Id).ToList();
+        }
+
+        return articles;
     }
 }

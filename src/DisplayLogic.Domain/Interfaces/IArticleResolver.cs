@@ -1,4 +1,5 @@
 using DisplayLogic.Domain.Entities;
+using DisplayLogic.Domain.Filters;
 
 namespace DisplayLogic.Domain.Interfaces;
 
@@ -22,4 +23,10 @@ public interface IArticleResolver
     /// The article with the specified unique identifier.
     /// </returns>
     Article? GetArticleById(Guid id);
+    /// <summary>
+    /// Gets a list of articles filtered by the specified filters.
+    /// </summary>
+    /// <param name="filters"></param>
+    /// <returns></returns>
+    List<Article> GetFilteredArticles(ArticleFilter? filters);
 }
