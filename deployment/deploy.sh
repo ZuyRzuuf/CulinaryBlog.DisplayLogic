@@ -37,13 +37,9 @@ tar -czf $ARTIFACT_NAME -C $root_dir/publish .
 echo "Sending the archive to the server..."
 rsync -avz -e "ssh" --progress $ARTIFACT_NAME $SERVER_USER@$SERVER_IP:$DESTINATION_PATH
 
-# Unzip the artifact on the server
-echo "Unzipping the artifact on the server..."
-ssh $SERVER_USER@$SERVER_IP "tar -xzf $DESTINATION_PATH/$ARTIFACT_NAME -C $DESTINATION_PATH"
-
-# Remove the zipped file from the server
-echo "Removing the zipped file from the server..."
-ssh $SERVER_USER@$SERVER_IP "rm $DESTINATION_PATH/$ARTIFACT_NAME"
+# Run culinary-blog.sh on the server
+echo "Running the deployment script on the server..."
+ssh $SERVER_USER@$SERVER_IP "bash /home/zuyrzuuf/webserver/deployment/culinary-blog.sh"
 
 # Cleanup
 echo "Cleaning up..."
