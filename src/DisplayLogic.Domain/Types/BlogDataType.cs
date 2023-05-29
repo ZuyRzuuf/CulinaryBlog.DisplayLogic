@@ -1,4 +1,5 @@
 using DisplayLogic.Domain.Entities;
+using DisplayLogic.Domain.Filters;
 using DisplayLogic.Domain.Interfaces;
 
 namespace DisplayLogic.Domain.Types;
@@ -9,7 +10,16 @@ public class BlogDataType : ObjectType<BlogData>
     {
         descriptor.Field(f => f.Articles)
             .Type<ListType<ArticleType>>()
-            .Name("articles");
+            .Name("articles")
+            .Argument("filters", a => a.Type<ArticleFilterInputType>())
+            .Resolve(ctx =>
+            {
+                var filters = ctx.ArgumentValue<ArticleFilter>("filters");
+                var articleResolver = ctx.Service<IArticleResolver>();
+                var articles = articleResolver.GetFilteredArticles(filters);
+
+                return articles;
+            });
 
         descriptor.Field(f => f.Recipes)
             .Type<ListType<RecipeType>>()
