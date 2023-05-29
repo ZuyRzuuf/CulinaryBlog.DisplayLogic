@@ -21,6 +21,11 @@ public class ArticleFilterInputType : InputObjectType<ArticleFilter>
             .Name("tagIds");
         
         descriptor
+            .Field(f => f.TagNames)
+            .Type<ListType<StringType>>()
+            .Name("tagNames");
+        
+        descriptor
             .Field(f => f.Id)
             .Type<UuidType>()
             .Name("articleId");

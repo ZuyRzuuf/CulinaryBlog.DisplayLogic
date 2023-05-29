@@ -63,6 +63,10 @@ public class ArticleResolver : IArticleResolver
         {
             articles = articles.Where(article => article.Tags.Any(tag => filters.TagIds.Contains(tag.Id))).ToList();
         }
+        else if (filters.TagNames != null && filters.TagNames.Any())
+        {
+            articles = articles.Where(article => article.Tags.Any(tag => filters.TagNames.Contains(tag.Name))).ToList();
+        }
         else if (filters.Id != null)
         {
             articles = articles.Where(article => article.Id == filters.Id).ToList();
