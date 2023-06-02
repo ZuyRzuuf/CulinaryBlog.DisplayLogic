@@ -2,6 +2,7 @@ using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
 using DisplayLogic.Domain.Resolvers;
 using DisplayLogic.Domain.Test.Unit.DataMocks;
+using Microsoft.Extensions.Logging;
 
 namespace DisplayLogic.Domain.Test.Unit.Resolvers;
 
@@ -9,11 +10,13 @@ public class ArticleResolverTests
 {
     private readonly IArticleResolver _articleResolver;
     private readonly List<Article> _testArticles;
+    private readonly Mock<ILogger<ArticleResolver>> _mockLogger;
     
     public ArticleResolverTests()
     {
+        _mockLogger = new Mock<ILogger<ArticleResolver>>();
         _testArticles = ArticleMocks.TestArticles;
-        _articleResolver = new ArticleResolver();
+        _articleResolver = new ArticleResolver(_mockLogger.Object);
     }
 
     [Fact]
