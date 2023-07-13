@@ -1,3 +1,8 @@
+# ignore files inside logs folder 
+src/logs/*
+#but not .gitkeep file
+!src/logs/.gitkeep
+
 # JetBrains
 .idea/
 **/[Bb]in/
