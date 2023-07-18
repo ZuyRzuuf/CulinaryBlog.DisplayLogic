@@ -1,3 +1,4 @@
+using DisplayLogic.Domain.Interfaces;
 using DisplayLogic.Domain.Resolvers;
 
 namespace DisplayLogic.Domain.Test.Unit.Resolvers;
@@ -5,10 +6,12 @@ namespace DisplayLogic.Domain.Test.Unit.Resolvers;
 public class RecipeResolverTests
 {
     private readonly RecipeResolver _recipeResolver;
+    private readonly Mock<IDataProviderClient> _mockDataProviderClient;
 
     public RecipeResolverTests()
     {
-        _recipeResolver = new RecipeResolver();
+        _mockDataProviderClient = new Mock<IDataProviderClient>();
+        _recipeResolver = new RecipeResolver(_mockDataProviderClient.Object);
     }
 
     [Fact]
