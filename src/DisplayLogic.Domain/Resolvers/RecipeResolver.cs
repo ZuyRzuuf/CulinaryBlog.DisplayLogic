@@ -7,9 +7,12 @@ namespace DisplayLogic.Domain.Resolvers;
 public class RecipeResolver : IRecipeResolver
 {
     private readonly List<Recipe> _recipes;
+    private readonly IDataProviderClient _dataProviderClient;
 
-    public RecipeResolver()
+    public RecipeResolver(IDataProviderClient dataProviderClient)
     {
+        _dataProviderClient = dataProviderClient;
+        
         var sampleAuthor = new Author { Id = Guid.Parse("8c6a9b4c-f504-4912-b25a-c8deee55bf57"), Username = "john_doe" };
         var secondAuthor = new Author { Id = Guid.Parse("c17fd06b-7ef5-4b2a-95b0-2dd692585eb3"), Username = "jane_doe" };
 
@@ -69,6 +72,8 @@ public class RecipeResolver : IRecipeResolver
     /// <inheritdoc />
     public List<Recipe> GetAllRecipes()
     {
+        _dataProviderClient.GetRecipesAsync();
+        
         return _recipes;
     }
 

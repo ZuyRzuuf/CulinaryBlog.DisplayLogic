@@ -23,13 +23,19 @@ public class QueryType : ObjectType<Query>
             {
                 var articleResolver = ctx.Service<IArticleResolver>();
                 var recipeResolver = ctx.Service<IRecipeResolver>();
-
+                
                 var articles = ctx.Parent<Query>().GetArticles(articleResolver);
                 var recipes = ctx.Parent<Query>().GetRecipes(recipeResolver);
                 var articleId = ctx.ArgumentValue<Guid>("articleId");
                 var article = articleId != Guid.Empty ? articleResolver.GetArticleById(articleId) : null;
                 var recipeId = ctx.ArgumentValue<Guid>("recipeId");
                 var recipe = recipeId != Guid.Empty ? recipeResolver.GetRecipeById(recipeId) : null;
+
+                // var articleId = ctx.ArgumentValue<Guid?>("articleId");
+                // // Use the passed articleId if it's provided, otherwise set it to null
+                // var article = articleId.HasValue
+                //     ? ctx.Parent<Query>().GetArticleById(articleResolver, articleId.Value)
+                //     : null;
 
                 return new BlogData
                 {

@@ -53,7 +53,7 @@ public class ArticleResolver : IArticleResolver
     /// <inheritdoc />
     public Article? GetArticleById(Guid id)
     {
-        _logger.LogInformation("Getting article by id: {Id}", id);
+        _logger.LogInformation("[DisplayLogic] Getting article by id: {Id}", id);
         
         return Articles.FirstOrDefault(article => article.Id == id);
     }
@@ -65,32 +65,32 @@ public class ArticleResolver : IArticleResolver
 
         if (filters == null)
         {
-            _logger.LogInformation("No filters provided, returning all articles");
+            _logger.LogInformation("[DisplayLogic] No filters provided, returning all articles");
             
             return articles;
         };
         
         if (filters.Ids != null && filters.Ids.Any())
         {
-            _logger.LogInformation("Filtering articles by ids: {Ids}", filters.Ids);
+            _logger.LogInformation("[DisplayLogic] Filtering articles by ids: {Ids}", filters.Ids);
             
             articles = articles.Where(article => filters.Ids.Contains(article.Id)).ToList();
         }
         else if (filters.TagIds != null && filters.TagIds.Any())
         {
-            _logger.LogInformation("Filtering articles by tag ids: {TagIds}", filters.TagIds);
+            _logger.LogInformation("[DisplayLogic] Filtering articles by tag ids: {TagIds}", filters.TagIds);
             
             articles = articles.Where(article => article.Tags.Any(tag => filters.TagIds.Contains(tag.Id))).ToList();
         }
         else if (filters.TagNames != null && filters.TagNames.Any())
         {
-            _logger.LogInformation("Filtering articles by tag names: {TagNames}", filters.TagNames);
+            _logger.LogInformation("[DisplayLogic] Filtering articles by tag names: {TagNames}", filters.TagNames);
             
             articles = articles.Where(article => article.Tags.Any(tag => filters.TagNames.Contains(tag.Name))).ToList();
         }
         else if (filters.Id != null)
         {
-            _logger.LogInformation("Filtering articles by id: {Id}", filters.Id);
+            _logger.LogInformation("[DisplayLogic] Filtering articles by id: {Id}", filters.Id);
             
             articles = articles.Where(article => article.Id == filters.Id).ToList();
         }
