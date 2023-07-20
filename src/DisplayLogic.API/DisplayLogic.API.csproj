@@ -27,4 +27,8 @@
       <ProjectReference Include="..\DisplayLogic.Infrastructure\DisplayLogic.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+    </ItemGroup>
+
 </Project>
