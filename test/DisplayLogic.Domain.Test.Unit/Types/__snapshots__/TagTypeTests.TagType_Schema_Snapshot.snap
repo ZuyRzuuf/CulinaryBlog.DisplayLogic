@@ -1,0 +1,109 @@
+﻿schema {
+  query: Query
+}
+
+type Article {
+  id: UUID!
+  title: String!
+  content: String!
+  author: Author!
+  publishedDate: DateTime!
+  imageUrl: String!
+  tags: [Tag!]!
+  comments: [Comment!]!
+}
+
+type Author {
+  id: UUID!
+  username: String!
+}
+
+type BlogData {
+  articles(filters: ArticleFilter): [Article]
+  recipes: [Recipe]
+  article(articleId: ID!): Article
+  recipe(recipeId: ID!): Recipe
+}
+
+type Category {
+  id: UUID!
+  name: String!
+}
+
+type Comment {
+  id: UUID!
+  content: String!
+  author: Author!
+  createdAt: DateTime!
+  articleId: UUID!
+  recipeId: UUID!
+}
+
+type Cuisine {
+  id: UUID!
+  name: String!
+}
+
+type Diet {
+  id: UUID!
+  name: String!
+}
+
+type Ingredient {
+  id: UUID!
+  name: String!
+}
+
+type Method {
+  id: UUID!
+  name: String!
+}
+
+type Query {
+  articles: [Article]
+  recipes: [Recipe]
+  blogData(articleId: UUID = "00000000-0000-0000-0000-000000000000" recipeId: UUID = "00000000-0000-0000-0000-000000000000"): BlogData
+  articleById(id: UUID!): Article!
+}
+
+type Recipe {
+  id: UUID!
+  title: String!
+  ingredients: [Ingredient!]!
+  instructions: [String!]!
+  author: Author!
+  publishedDate: DateTime!
+  imageUrl: String!
+  category: Category!
+  cuisine: Cuisine!
+  diet: Diet!
+  method: Method!
+  season: Season!
+  tags: [Tag!]!
+  comments: [Comment!]!
+}
+
+type Season {
+  id: UUID!
+  name: String!
+}
+
+type Tag {
+  id: UUID!
+  name: String!
+}
+
+input ArticleFilter {
+  articleIds: [UUID]
+  tagIds: [UUID]
+  tagNames: [String]
+  articleId: UUID
+}
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime @specifiedBy(url: "https:\/\/www.graphql-scalars.com\/date-time")
+
+scalar UUID @specifiedBy(url: "https:\/\/tools.ietf.org\/html\/rfc4122")
