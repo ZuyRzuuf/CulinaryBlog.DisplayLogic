@@ -11,17 +11,22 @@ public class ArticleResolverTests
     private readonly IArticleResolver _articleResolver;
     private readonly List<Article> _testArticles;
     private readonly Mock<ILogger<ArticleResolver>> _mockLogger;
+    private readonly Mock<IArticleService> _mockArticleService;
     
     public ArticleResolverTests()
     {
         _mockLogger = new Mock<ILogger<ArticleResolver>>();
+        _mockArticleService = new Mock<IArticleService>();
         _testArticles = ArticleMocks.TestArticles;
-        _articleResolver = new ArticleResolver(_mockLogger.Object);
+        _articleResolver = new ArticleResolver(_mockLogger.Object, _mockArticleService.Object);
     }
 
     [Fact]
     public void GetAllArticles_ReturnsListOfArticles()
     {
+        // Arrange
+        _mockArticleService.Setup(s => s.GetAllArticles()).Returns(_testArticles);
+
         // Act
         var result = _articleResolver.GetAllArticles();
 
@@ -36,7 +41,8 @@ public class ArticleResolverTests
     {
         // Arrange
         var existingId = _testArticles.First().Id;
-        
+        _mockArticleService.Setup(s => s.GetArticleById(existingId)).Returns(_testArticles.First(a => a.Id == existingId));
+
         // Act
         var result = _articleResolver.GetArticleById(existingId);
 
@@ -51,7 +57,8 @@ public class ArticleResolverTests
     {
         // Arrange
         var nonExistingId = Guid.Parse("00000000-0000-0000-0000-000000000000");
-    
+        _mockArticleService.Setup(s => s.GetArticleById(nonExistingId)).Returns((Article)null);
+
         // Act
         var result = _articleResolver.GetArticleById(nonExistingId);
 

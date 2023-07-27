@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
 
         services
             .AddScoped<IArticleResolver, ArticleResolver>()
+            .AddScoped<IArticleService, ArticleService>()
             .AddScoped<IRecipeResolver, RecipeResolver>()
             .AddScoped<ICommentResolver, CommentResolver>()
             .AddScoped<ICommentService, CommentService>();
