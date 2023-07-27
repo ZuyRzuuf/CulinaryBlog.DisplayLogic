@@ -2,8 +2,6 @@ using DisplayLogic.Domain.ExtensionMethods;
 using DisplayLogic.Domain.Types;
 using DisplayLogic.Infrastructure.ExtensionMethods;
 using DisplayLogic.Infrastructure.Options;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -57,23 +55,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
     endpoints.MapGraphQL();
 });
-
-
-// app.UseSerilogRequestLogging();
-//
-// // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
-//
-// app.UseHttpsRedirection();
-//
-// app.UseAuthorization();
-//
-// app.MapControllers();
-// app.MapGraphQL();
 
 app.Run();
 

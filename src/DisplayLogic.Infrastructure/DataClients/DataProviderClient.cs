@@ -9,7 +9,7 @@ namespace DisplayLogic.Infrastructure.DataClients;
 
 public class DataProviderClient : IDataProviderClient
 {
-    private readonly HttpClient _httpClient;
+    public readonly HttpClient _httpClient;
     private readonly DataProviderOptions _dataProviderOptions;
     private readonly ILogger<DataProviderClient> _logger;
 
@@ -33,6 +33,8 @@ public class DataProviderClient : IDataProviderClient
         var response = await _httpClient.GetAsync(
             url,
             cancellationToken);
+        
+        _logger.LogInformation("Response status code: {StatusCode}", response.StatusCode);
         
         List<RecipeDto>? recipes = null;
 
