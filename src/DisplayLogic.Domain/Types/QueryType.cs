@@ -19,7 +19,7 @@ public class QueryType : ObjectType<Query>
             .Type<BlogDataType>()
             .Argument("articleId", arg => arg.Type<UuidType>().DefaultValue(Guid.Empty))
             .Argument("recipeId", arg => arg.Type<UuidType>().DefaultValue(Guid.Empty))
-            .Resolve<BlogData>(ctx =>
+            .Resolve<BlogData>(async ctx =>
             {
                 var articleResolver = ctx.Service<IArticleResolver>();
                 var recipeResolver = ctx.Service<IRecipeResolver>();
@@ -29,7 +29,12 @@ public class QueryType : ObjectType<Query>
                 var articleId = ctx.ArgumentValue<Guid>("articleId");
                 var article = articleId != Guid.Empty ? articleResolver.GetArticleById(articleId) : null;
                 var recipeId = ctx.ArgumentValue<Guid>("recipeId");
-                var recipe = recipeId != Guid.Empty ? recipeResolver.GetRecipeById(recipeId) : null;
+                
+                Recipe? recipe = null;
+                if (recipeId != Guid.Empty)
+                {
+                    recipe = await recipeResolver.GetRecipeByIdAsync(recipeId);
+                }
 
                 // var articleId = ctx.ArgumentValue<Guid?>("articleId");
                 // // Use the passed articleId if it's provided, otherwise set it to null

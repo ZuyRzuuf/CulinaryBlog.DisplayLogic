@@ -51,7 +51,7 @@ public class BlogDataType : ObjectType<BlogData>
             {
                 var recipeId = ctx.ArgumentValue<Guid>("recipeId");
                 var recipeResolver = ctx.Service<IRecipeResolver>();
-                var recipe = recipeResolver.GetRecipeById(recipeId);
+                var recipe = recipeResolver.GetRecipeByIdAsync(recipeId);
 
                 if (recipe != null) return recipe;
                 

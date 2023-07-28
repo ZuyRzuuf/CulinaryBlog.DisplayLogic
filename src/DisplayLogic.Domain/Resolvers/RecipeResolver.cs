@@ -1,5 +1,6 @@
 using DisplayLogic.Domain.Entities;
 using DisplayLogic.Domain.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace DisplayLogic.Domain.Resolvers;
 
@@ -8,13 +9,22 @@ public class RecipeResolver : IRecipeResolver
 {
     private readonly List<Recipe> _recipes;
     private readonly IDataProviderClient _dataProviderClient;
+    private readonly IRecipeService _recipeService;
+    private readonly ILogger<RecipeResolver> _logger;
 
-    public RecipeResolver(IDataProviderClient dataProviderClient)
+    public RecipeResolver(
+        IDataProviderClient dataProviderClient, 
+        IRecipeService recipeService,
+        ILogger<RecipeResolver> logger)
     {
         _dataProviderClient = dataProviderClient;
-        
-        var sampleAuthor = new Author { Id = Guid.Parse("8c6a9b4c-f504-4912-b25a-c8deee55bf57"), Username = "john_doe" };
-        var secondAuthor = new Author { Id = Guid.Parse("c17fd06b-7ef5-4b2a-95b0-2dd692585eb3"), Username = "jane_doe" };
+        _recipeService = recipeService;
+        _logger = logger;
+
+        var sampleAuthor = new Author
+            { Id = Guid.Parse("8c6a9b4c-f504-4912-b25a-c8deee55bf57"), Username = "john_doe" };
+        var secondAuthor = new Author
+            { Id = Guid.Parse("c17fd06b-7ef5-4b2a-95b0-2dd692585eb3"), Username = "jane_doe" };
 
         _recipes = new List<Recipe>
         {
@@ -68,18 +78,30 @@ public class RecipeResolver : IRecipeResolver
             }
         };
     }
-    
+
     /// <inheritdoc />
-    public List<Recipe> GetAllRecipes()
+    public async Task<List<Recipe>> GetAllRecipesAsync(CancellationToken cancellationToken = default)
     {
-        _dataProviderClient.GetRecipesAsync();
+        _logger.LogInformation("[DisplayLogic:RecipeResolver] Getting recipes from RecipeService");
         
-        return _recipes;
+        var recipes = await _recipeService.GetAllRecipesAsync(cancellationToken);
+        
+        _logger.LogInformation("[DisplayLogic:RecipeResolver] Recipes: {@Recipes}", recipes);
+        
+        cancellationToken.ThrowIfCancellationRequested();
+
+        return recipes;
     }
 
     /// <inheritdoc />
-    public Recipe? GetRecipeById(Guid id)
+    public async Task<Recipe?> GetRecipeByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return _recipes.FirstOrDefault(recipe => recipe.Id == id);
+        _logger.LogInformation("[DisplayLogic:RecipeResolver] Getting recipe by id {Id}", id);
+        
+        var recipe = await _recipeService.GetRecipeByIdAsync(id, cancellationToken);
+        
+        _logger.LogInformation("[DisplayLogic:RecipeResolver] Recipe: {@Recipe}", recipe);
+        
+        return recipe;
     }
 }
