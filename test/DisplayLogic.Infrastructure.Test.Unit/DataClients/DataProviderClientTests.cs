@@ -1,5 +1,7 @@
 using System.Net;
+using System.Text.Json;
 using DisplayLogic.Infrastructure.DataClients;
+using DisplayLogic.Infrastructure.Exceptions;
 using DisplayLogic.Infrastructure.Options;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -75,7 +77,7 @@ public class DataProviderClientTests
     }
 
     [Fact]
-    public async Task GetRecipesAsync_ReturnsNull_WhenResponseIsUnsuccessful()
+    public async Task GetRecipesAsync_ThrowsDataClientConnectionProblemException_WhenResponseIsUnsuccessful()
     {
         // Arrange
         var handler = new Mock<HttpMessageHandler>();
@@ -85,18 +87,15 @@ public class DataProviderClientTests
             .ReturnsResponse(HttpStatusCode.BadRequest);
 
         _httpClient = new HttpClient(handler.Object);
-        
+    
         var dataProviderClient = new DataProviderClient(_httpClient, _mockOptions.Object, _mockLogger.Object);
-        
-        // Act
-        var recipes = await dataProviderClient.GetRecipesAsync();
-
-        // Assert
-        Assert.Null(recipes);
+    
+        // Act & Assert
+        await Assert.ThrowsAsync<DataClientConnectionProblemException>(() => dataProviderClient.GetRecipesAsync());
     }
     
     [Fact]
-    public async Task GetRecipesAsync_ReturnsNull_WhenJsonIsInvalid()
+    public async Task GetRecipesAsync_ThrowsJsonException_WhenJsonIsInvalid()
     {
         // Arrange
         var handler = new Mock<HttpMessageHandler>();
@@ -106,14 +105,11 @@ public class DataProviderClientTests
             .ReturnsResponse(HttpStatusCode.OK, "invalid JSON");
 
         _httpClient = new HttpClient(handler.Object);
-        
+    
         var dataProviderClient = new DataProviderClient(_httpClient, _mockOptions.Object, _mockLogger.Object);
-        
-        // Act
-        var recipes = await dataProviderClient.GetRecipesAsync();
-
-        // Assert
-        Assert.Null(recipes);
+    
+        // Act & Assert
+        await Assert.ThrowsAsync<JsonException>(() => dataProviderClient.GetRecipesAsync());
     }
 
     [Fact]
@@ -150,7 +146,7 @@ public class DataProviderClientTests
         var testGuid = Guid.NewGuid();
 
         // Act & Assert
-        Assert.ThrowsAsync<NotImplementedException>(() => dataProviderClient.GetRecipeAsync(testGuid));
+        Assert.ThrowsAsync<NotImplementedException>(() => dataProviderClient.GetRecipeByIdAsync(testGuid));
     }
 
     [Fact]

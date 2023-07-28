@@ -18,7 +18,7 @@ public interface IDataProviderClient
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public Task<RecipeDto> GetRecipeAsync(Guid id);
+    public Task<RecipeDto?> GetRecipeByIdAsync(Guid id, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Get recipes by partial title.

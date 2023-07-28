@@ -3,9 +3,9 @@ using DisplayLogic.Domain.Entities;
 namespace DisplayLogic.Domain.Interfaces;
 
 /// <summary>
-/// GraphQL resolver for recipes.
+/// Service for managing recipes.
 /// </summary>
-public interface IRecipeResolver
+public interface IRecipeService
 {
     /// <summary>
     /// Get all recipes

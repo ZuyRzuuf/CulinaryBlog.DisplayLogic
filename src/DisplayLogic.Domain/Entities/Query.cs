@@ -48,6 +48,6 @@ public class Query
     /// <returns></returns>
     public List<Recipe> GetRecipes([Service] IRecipeResolver recipeResolver)
     {
-        return recipeResolver.GetAllRecipes();
+        return recipeResolver.GetAllRecipesAsync().Result;
     }
 }
